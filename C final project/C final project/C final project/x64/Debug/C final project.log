@@ -1,2 +1,3 @@
 ﻿  C final project.cpp
-  C final project.vcxproj -> C:\c_code\C final project\C final project\x64\Debug\C final project.exe
+C:\Users\kevin\OneDrive\桌面\draw-lots\C final project\C final project\C final project\C final project.cpp(11,2): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C final project.vcxproj -> C:\Users\kevin\OneDrive\桌面\draw-lots\C final project\C final project\x64\Debug\C final project.exe

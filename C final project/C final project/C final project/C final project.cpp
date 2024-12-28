@@ -7,6 +7,7 @@ void input_system();
 
 int main(void) {
 	int s;
+    printf("數字系統:1 文字系統:2\n");
 	printf("請選擇數字系統或文字系統:");
 	scanf("%d", &s);
 	switch (s)

@@ -6,42 +6,53 @@ void number_system();
 void input_system();
 
 int main(void) {
-	int s;
-    printf("----------------抽籤工具---------------\n");
-    printf("輸入數字選擇系統，數字系統:1 文字系統:2\n");
-	printf("請選擇數字系統或文字系統:");
-	scanf("%d", &s);
-	switch (s)
-	{
-	case 1:
-		number_system();
-		break;
-	case 2:
-		input_system();
-		break;
-	};
-	system("pause");
-	return 0;
+    int s, continueFlag;
+    // 使用while迴圈來控制是否繼續
+    do {
+        printf("----------------抽籤工具---------------\n");
+        printf("輸入數字選擇系統，數字系統:1 文字系統:2\n");
+        printf("請選擇數字系統或文字系統:");
+        scanf("%d", &s);
+
+        switch (s) {
+        case 1:
+            number_system();
+            break;
+        case 2:
+            input_system();
+            break;
+        default:
+            printf("選擇無效，請輸入 1 或 2\n");
+            break;
+        }
+        // 顯示是否繼續的選項
+        printf("是否繼續? 輸入 1 繼續，輸入 0 結束: ");
+        scanf("%d", &continueFlag);
+    } while (continueFlag == 1);  // 如果輸入1則繼續，輸入0則結束
+    return 0;
 }
 
 void number_system() {
-    int lowest;//最小數
-    int largest;//最大數
-    int target;//抽取多少目標
-    int i, range;
+    int lowest, largest, target, i, range;
     int* arr;
 
-    printf("請輸入最小數: ");
-    scanf("%d", &lowest);
-    printf("請輸入最大數: ");
-    scanf("%d", &largest);
+    do {
+        printf("請輸入最小數: ");
+        scanf("%d", &lowest);
+        printf("請輸入最大數: ");
+        scanf("%d", &largest);
+
+        if (lowest > largest) {
+            printf("錯誤: 最小數不可大於最大數，請重新輸入。\n");
+        }
+    } while (lowest > largest); // 當最小數比最大數大時重新輸入
+    
     printf("請輸入抽取幾個目標: ");
     scanf("%d", &target);
 
+    range = largest - lowest + 1;
 
-    range = largest - lowest + 1;//計算範圍
-
-    arr = (int*)malloc(range * sizeof(int));//動態記憶體
+    arr = (int*)malloc(range * sizeof(int));
 
     // 將範圍內的數值存入陣列
     for (i = 0; i < range; i++) {
@@ -64,6 +75,9 @@ void number_system() {
     for (i = 0; i < target; i++) {
         printf("%d ", arr[i]);
     }
+    printf("\n");
+
+    free(arr);  // 釋放動態記憶體
 }
 
 void input_system() {
